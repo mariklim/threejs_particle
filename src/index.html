@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;1,500&display=swap" rel="stylesheet">
+    
+    <title>ThreeJS Particles</title>
+</head>
+<body>
+   <div class="container">
+        <div class="content">
+            <h1>Un mondo di particelle</h1>
+            <p>"L'universo è rappresentato in ognuna delle sue particelle. Ogni cosa in natura contiene tutti i poteri della natura."
+                <span class="cit">
+                    Ralph Waldo Emerson
+                </span>
+            </p>
+        </div>
+
+   </div>
+    <canvas class="webgl"></canvas>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js" integrity="sha512-H6cPm97FAsgIKmlBA4s774vqoN24V5gSQL4yBTDOY2su2DeXZVhQPxFK4P6GPdnZqM9fg1G3cMv5wD7e6cFLZQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/CSSRulePlugin.min.js" integrity="sha512-Aa3UvVB5yhH/dNXMt8nGZDD15Xmntq1ODcavfgT8omSLaomrJKYybWczzc6UJYDUAdqR1hmDJ47V4Ux50PPIuw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+
+        const content = CSSRulePlugin.getRule('.content:before')
+        const h1 = document.querySelector('h1')
+        const p = document.querySelector('p')
+        const timeLine = gsap.timeline()
+
+        timeLine.from(content, { 
+            delay: .5, 
+            duration: 4, 
+            cssRule: {scaleX:0}
+        })
+
+        timeLine.to(h1, {duration: 2,clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)',y:"30px"}, "-=3")
+
+        timeLine.to(p, {duration: 4,clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)', y:"30px"}, "-=2")
+
+        // "-=3" per velocizzare
+    </script>
+</body>
+</html>
